@@ -1,0 +1,27 @@
+﻿@page
+@using System.Data.SqlClient;
+@{
+    string id = Request.Query["InventoryID"];
+    try
+    {
+        string connectionString = "Data Source=inventoryserver1.database.windows.net;Initial Catalog=Inventory;Persist Security Info=True;User ID=inventory;Password=pvamuaitc1!";
+        using (SqlConnection connection = new SqlConnection(connectionString))
+        {
+            connection.Open();
+            string sql = "DELETE FROM Inventory where InventoryID=@InventoryID";
+            using (SqlCommand command = new SqlCommand(sql, connection))
+            {
+                command.Parameters.AddWithValue("@InventoryID", id);
+                command.ExecuteNonQuery();
+            }
+
+        }
+
+
+    }
+    catch(Exception ex)
+    {
+        Console.WriteLine(ex.Message); //display error message on the console
+    }
+    Response.Redirect("/Admin/Inventory/Index");
+}

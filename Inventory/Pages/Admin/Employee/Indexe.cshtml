@@ -1,0 +1,58 @@
+﻿@page
+@model inventory.Pages.Admin.Employee.IndexeModel
+@{
+}
+<br>
+<h2 class="my-3">Employee List</h2> <!-- This is the heading -->
+
+<div class="row mb-3">
+    <div class="col">
+        <a class='btn btn-primary' href='/Admin/Employee/Createe'>New Employee</a>
+    </div>
+    <div class="col">
+        <form class="d-flex">
+            <input class="form-control me-2" type="search" name="search" value="@Model.search" placeholder="Search by EmployeeID or FirstName">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </div>
+</div>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>EmployeeID*</th> <!-- Table heading -->
+            <th>FirstName*</th>
+            <th>LastName*</th>
+            <th>DepartmentID</th>
+            <th>EMPType</th>
+            <th>Room_id</th>
+            <th>Email</th>
+            <th>PhoneNumber</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model.ListEmployee)
+        {
+            <tr>
+                <td>@item.EmployeeID</td> <!-- table data -->
+                <td>@item.FirstName</td>
+                <td>@item.LastName</td>
+                <td>@item.DepartmentID </td>
+                <td>@item.EMPType</td>
+                <td>@item.Room_id</td>
+                <td>@item.Email</td>
+                <td>@item.PhoneNumber</td>
+                <td style="white-space:nowrap">
+
+                    <a class="btn btn-primary btn-sm" href="/Admin/Employee/Edite?EmployeeID=@item.EmployeeID">Edit</a>
+                    <a class="btn btn-danger btn-sm" href="/Admin/Employee/Delete?EmployeeID=@item.EmployeeID">Delete</a>
+                </td>
+            </tr>
+
+        }
+
+    </tbody>
+</table>

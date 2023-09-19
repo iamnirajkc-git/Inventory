@@ -1,0 +1,63 @@
+﻿@page
+@model inventory.Pages.Admin.Inventory.IndexModel
+@{
+}
+<br>
+<h2 class="my-3">Inventory List</h2> <!-- This is the heading -->
+
+<div class="row mb-3">
+    <div class="col">
+        <a class='btn btn-primary' href ='/Admin/Inventory/Create'>New Inventory</a>
+    </div>
+    <div class="col">
+        <form class="d-flex">
+            <input class="form-control me-2" type="search" name="search" value="@Model.search" placeholder="Search by CurrentOwner or AssetTag">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </div>
+</div>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>InventoryID</th> <!-- Table heading -->
+            <th>assetname</th>
+            <th>IssuedDepartment</th>
+            <th>AssetTag </th>
+            <th>CurrentOwner</th>
+            <th>PreviousOwner</th>
+            <th>DateIssued</th>
+            <th>Issued_ID</th>
+            <th>Status</th>
+            <th>Notes</th>
+            <th>IssuedRoom</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach(var item in Model.ListInventory)
+        {
+            <tr>
+                <td>@item.InventoryID</td> <!-- table data -->
+                <td>@item.assetname</td>
+                <td>@item.IssuedDepartment</td>
+                <td>@item.AssetTag </td>
+                <td>@item.CurrentOwner</td>
+                <td>@item.PreviousOwner</td>
+                <td>@item.DateIssued</td>
+                <td>@item.Issued_ID</td>
+                <td>@item.Status</td>
+                <td>@item.Notes</td>
+                <td>@item.IssuedRoom</td>
+                <td style="white-space:nowrap">
+                    <a class="btn btn-primary btn-sm" href="/Admin/Inventory/Edit?InventoryID=@item.InventoryID">Edit</a>
+                    <a class="btn btn-danger btn-sm" href="/Admin/Inventory/Delete?InventoryID=@item.InventoryID">Delete</a>
+                </td>
+            </tr>
+     
+        }
+
+    </tbody>
+</table>

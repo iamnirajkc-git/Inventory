@@ -1,0 +1,77 @@
+﻿@page
+@model inventory.Pages.Admin.Asset.CreateaModel
+@{
+}
+
+
+<div class="row">
+    <div class="col-lg-9 mx-auto p-3">
+        <h3 class="mb-3 font-weight-normal text-center pb-4">Asset Form</h3>
+
+        @if (Model.ErrorMessage.Length > 0)
+        {
+            <div class='alert alert-warning alert-dismissible fade show' role='alert'>
+                <strong>@Model.ErrorMessage</strong>
+                <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+            </div>
+        }
+        else if (Model.SuccessMessage.Length > 0)
+        {
+            <div class='alert alert-success alert-dismissible fade show' role='alert'>
+                <strong>@Model.SuccessMessage</strong>
+                <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+            </div>
+        }
+
+
+        <form method="post">
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label" asp-for="AssetTag"></label>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="AssetTag">
+                    <span asp-validation-for="AssetTag" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label" asp-for="AssetName"></label>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="AssetName">
+                    <span asp-validation-for="AssetName" class="text-danger"></span>
+                </div>
+            </div>
+            
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label" asp-for="AssetType"></label>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="AssetType">
+                    <span asp-validation-for="AssetTag" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label" asp-for="AssetSerialNumber"></label>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="AssetSerialNumber">
+                    <span asp-validation-for="AssetSerialNumber" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label" asp-for="Manufacturer"></label>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="Manufacturer">
+                    <span asp-validation-for="Manufacturer" class="text-danger"></span>
+                </div>
+            </div>
+            
+            
+            <div class="row mb-3">
+                <div class="offset-sm-4 col-sm-3 d-grid">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+                <div class="col-sm-3 d-grid">
+                    <a class="btn btn-outline-primary" href="/Admin/Asset/Indexa" role="button">Cancel</a>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>

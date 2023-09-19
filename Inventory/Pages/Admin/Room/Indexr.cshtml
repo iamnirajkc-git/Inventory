@@ -1,0 +1,49 @@
+﻿@page
+@model inventory.Pages.Admin.Room.IndexrModel
+@{
+}
+<br>
+<h2 class="my-3">Room List</h2> <!-- This is the heading -->
+
+<div class="row mb-3">
+    <div class="col">
+        <a class='btn btn-primary' href='/Admin/Room/Creater'>New Room</a>
+    </div>
+    <div class="col">
+        <form class="d-flex">
+            <input class="form-control me-2" type="search" name="search" value="@Model.search" placeholder="Search by Room_id or BuildingName">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </div>
+</div>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Room_id*</th> <!-- Table heading -->
+            <th>RoomNumber*</th>
+            <th>BuildingName</th>
+            <th>FloorNumber </th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model.ListRoom)
+        {
+            <tr>
+                <td>@item.Room_id</td> <!-- table data -->
+                <td>@item.RoomNumber</td>
+                <td>@item.BuildingName</td>
+                <td>@item.FloorNumber </td>
+                <td style="white-space:nowrap">
+                    <a class="btn btn-primary btn-sm" href="/Admin/Room/Editr?Room_id=@item.Room_id">Edit</a>
+                    <a class="btn btn-danger btn-sm" href="/Admin/Room/Deleter?Room_id=@item.Room_id">Delete</a>
+                </td>
+            </tr>
+
+        }
+
+    </tbody>
+</table>

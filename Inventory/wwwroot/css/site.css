@@ -1,0 +1,51 @@
+* {
+    margin:0;
+    padding:0;
+}
+
+.wrapper {
+    background-color: #f0f0f0; /* Set background color */
+    padding: 20px; /* Add padding */
+    border: 1px solid #ccc; /* Add a border */
+    /* Other styles go here */
+}
+
+In this example, the .wrapper class is used to define styles like the background color, padding, and border for any element with the class "wrapper" in your HTML code. You can add any CSS properties and values within this rule to control the appearance and layout of elements with that class.
+
+
+
+
+
+
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+body {
+    background-color: #FAF3E0;
+}
+
+/* CSS for logo container with z-index */
+.university-image {
+    width: 150px; /* Reduce the size of the image to half */
+    float: right; /* Float the image to the left */
+    margin-right: 20px; /* Add some right margin for spacing */
+}
+
+
+

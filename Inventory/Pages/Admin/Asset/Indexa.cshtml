@@ -1,0 +1,54 @@
+﻿@page
+@model inventory.Pages.Admin.Asset.IndexaModel
+@{
+}
+
+<br>
+<h2 class="my-3">Asset List</h2> <!-- This is the heading -->
+
+<div class="row mb-3">
+    <div class="col">
+        <a class='btn btn-primary' href='/Admin/Asset/Createa'>New Asset</a>
+    </div>
+    <div class="col">
+        <form class="d-flex">
+            <input class="form-control me-2" type="search" name="search" value="@Model.search" placeholder="Search by AssetType or AssetTag or AssetSerialNumber ">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </div>
+</div>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>AssetTag</th> <!-- Table heading -->
+            <th>AssetName</th>
+            <th>AssetType</th>
+            <th>AssetSerialNumber </th>
+            <th>Manufacturer</th>
+            <th>Action</th>
+ 
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model.ListAsset)
+        {
+            <tr>
+                <td>@item.AssetTag</td> <!-- table data -->
+                <td>@item.AssetName</td>
+                <td>@item.AssetType</td>
+                <td>@item.AssetSerialNumber </td>
+                <td>@item.Manufacturer</td>
+           
+                <td style="white-space:nowrap">
+                    <a class="btn btn-primary btn-sm" href="/Admin/Asset/Edita?AssetTag=@item.AssetTag">Edit</a>
+                    <a class="btn btn-danger btn-sm" href="/Admin/Asset/Delete?AssetTag=@item.AssetTag">Delete</a>
+                </td>
+            </tr>
+
+        }
+
+    </tbody>
+</table>

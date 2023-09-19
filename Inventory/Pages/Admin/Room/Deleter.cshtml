@@ -1,0 +1,28 @@
+﻿@page
+@using System.Data.SqlClient;
+@{
+    string id = Request.Query["Room_id"];
+    try
+    {
+        string connectionString = "Data Source=inventoryserver1.database.windows.net;Initial Catalog=Inventory;Persist Security Info=True;User ID=inventory;Password=pvamuaitc1!";
+        using (SqlConnection connection = new SqlConnection(connectionString))
+        {
+            connection.Open();
+            string sql = "DELETE FROM Room WHERE Room_id=@Room_id";
+            using (SqlCommand command = new SqlCommand(sql, connection))
+            {
+                command.Parameters.AddWithValue("@Room_id", id);
+                int rowsAffected = command.ExecuteNonQuery();
+                Console.WriteLine($"Rows affected: {rowsAffected}");
+            }
+
+        }
+
+
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine(ex.Message); //display error message on the console
+    }
+    Response.Redirect("/Admin/Room/Indexr");
+}

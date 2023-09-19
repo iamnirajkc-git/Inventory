@@ -1,0 +1,47 @@
+﻿@page
+@model inventory.Pages.Admin.Department.IndexdModel
+@{
+}
+<br>
+<h2 class="my-3">Department List</h2> <!-- This is the heading -->
+
+<div class="row mb-3">
+    <div class="col">
+        <a class='btn btn-primary' href='/Admin/Department/Created'>New Department</a>
+    </div>
+    <div class="col">
+        <form class="d-flex">
+            <input class="form-control me-2" type="search" name="search" value="@Model.search" placeholder="Search by DepartmentID or DepartmentName">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </div>
+</div>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>DepartmentID</th> <!-- Table heading -->
+            <th>DepartmentName</th>
+      
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model.ListDepartment)
+        {
+            <tr>
+                <td>@item.DepartmentID</td> <!-- table data -->
+                <td>@item.DepartmentName</td>
+            
+                <td style="white-space:nowrap">
+                    <a class="btn btn-primary btn-sm" href="/Admin/Department/Editd?DepartmentID=@item.DepartmentID">Edit</a>
+                    <a class="btn btn-danger btn-sm" href="/Admin/Department/Delete?DepartmentID=@item.DepartmentID">Delete</a>
+                </td>
+            </tr>
+
+        }
+
+    </tbody>
+</table>
